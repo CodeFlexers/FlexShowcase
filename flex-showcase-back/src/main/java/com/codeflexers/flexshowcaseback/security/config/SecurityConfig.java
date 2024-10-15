@@ -4,6 +4,7 @@ import com.codeflexers.flexshowcaseback.security.jwt.JWTFilter;
 import com.codeflexers.flexshowcaseback.security.jwt.JWTUtil;
 import com.codeflexers.flexshowcaseback.security.jwt.LoginFilter;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -70,9 +71,22 @@ public class SecurityConfig {
         //경로별 인가 작업
         http
                 .authorizeHttpRequests((auth)-> auth
-                        .requestMatchers("/이경로는검사").authenticated()
+                        .requestMatchers("/aaa").authenticated()
                         .requestMatchers("/admin").hasRole("ADMIN")
-                        .anyRequest().permitAll());
+                        .anyRequest().permitAll())
+                .exceptionHandling(exception -> exception
+                        .authenticationEntryPoint((request, response, authException) -> {
+                            // 인증 실패 시
+                            response.setContentType("application/json;charset=UTF-8");
+                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                            response.getWriter().write("{\"error\": \"인증 실패\", \"message\": \"인증에 실패했습니다.\"}");
+                        })
+                        .accessDeniedHandler((request, response, accessDeniedException) -> {
+                            // 권한 부족 시
+                            response.setContentType("application/json;charset=UTF-8");
+                            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                            response.getWriter().write("{\"error\": \"권한 부족\", \"message\": \"어드민만 접근 가능합니다.\"}");
+                        }));
 
         http
                 .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil), UsernamePasswordAuthenticationFilter.class);

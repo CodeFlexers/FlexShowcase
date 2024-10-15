@@ -30,7 +30,7 @@ public class JWTFilter extends OncePerRequestFilter {
      */
     private boolean checkUrl(String path){
 
-        String[] needAuthUrl = {"/file","/아무거나","/login-test"};
+        String[] needAuthUrl = {"/test"};
 
         for (String s : needAuthUrl) {
             if (s.equals(path)) {
@@ -47,7 +47,7 @@ public class JWTFilter extends OncePerRequestFilter {
             String authorization = request.getHeader("Authorization");
             if(authorization == null || !authorization.startsWith("Bearer ")){
                 System.out.println("token이 없거나, Bearer가 포함되어 있지 않습니다.");
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED,"잘못된 요청입니다.");
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED,"토큰이 없거나, Bearer가 포함되어 있지 않습니다.");
                 return;
             }
             String token = authorization.split(" ")[1];
@@ -76,6 +76,14 @@ public class JWTFilter extends OncePerRequestFilter {
 
             filterChain.doFilter(request,response);
         } else {
+
+            //테스트 코드 시작
+            User user = new User(1L,"wjdwltjq","wjdwltjq","ROLE_USER","정지섭");
+            CustomUserDetails customUserDetails = new CustomUserDetails(user);
+            Authentication authToken = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(authToken);
+            //테스트 코드 끝
+
             //검사 필요한거 아니면 넘어감 유저가 누군지 모름!
             filterChain.doFilter(request,response);
         }
