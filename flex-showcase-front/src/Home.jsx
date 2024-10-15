@@ -1,27 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ProfileCard from "./ProfileCard";
 import "./App.css"
-import api from "./common/api";
 
 
 
 const Home = () => {
 
     const [users, setUsers] = useState([]);
-
-    const getAllUsers = async() => {
-
-        const res = await api.get("/main/user-infor");
-        console.log(res.data);
-        
-        setUsers(res.data);
-
-    }
-
-    useEffect(() => {
-        getAllUsers();
-
-    }, [])
 
  return <div className="Home">
     
@@ -38,9 +23,12 @@ const Home = () => {
     <div>
         <h2>Profile</h2>
         <div className="profile-cardList">
-            {users.map((user, idx) => 
+            {/* {users.map((idx, user) => {
                 <ProfileCard key={idx} user={user}/>
-            )}
+            })} */}
+            <ProfileCard />
+            <ProfileCard />
+            <ProfileCard />
 
         </div>
     </div>

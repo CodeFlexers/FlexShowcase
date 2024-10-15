@@ -1,25 +1,21 @@
 import "./ProfileCard.css";
 
-const ProfileCard = ({user}) => {
-
-
+const ProfileCard = () => {
 
 
     return(
-        <div className="ProfileCard" style={{display:'flex',flexDirection:'column'}}>
+        <div className="ProfileCard">
+            <img src="profile-image.jpg" alt="프로필 사진" className="profile-image" />
 
-            <div style={{display: "flex",alignItems:'center'}}>
-                <img src={user.profileImage} alt="프로필 사진" className="profile-image" 
-                    onError={(e) => e.target.src = './logo192.png'}
-                />
-                <div className="profile-user-info">
-                    <div className="user-name">{user.name}</div>
-                    <div>email | {user.email}</div>
-                    <div>birth | {user.birthDate ? `${user.birthDate[0]}.${user.birthDate[1]}.${user.birthDate[2]}` : ``}</div>
+            <div className="profile-user-info">
+                <div className="user-name">차윤하</div>
+                <div>email | helena02282naver.com</div>
+                <div>birth | 2000.02.28</div>
+                <div>tech |
+                    <div>React, Spring Boot, Spring Data JPA</div> 
                 </div>
-            </div>
-                <div style={{alignSelf:'flex-start'}} dangerouslySetInnerHTML={{__html: user.contentHTML}}></div>
                 <button className="contact-profile-btn">contact me</button>
+            </div>
 
         </div>
 
