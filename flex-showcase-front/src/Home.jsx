@@ -22,11 +22,10 @@ const Home = () => {
 
     <div>
         <h2>Profile</h2>
-        <div className="profile-containter">
+        <div className="profile-cardList">
             {/* {users.map((idx, user) => {
                 <ProfileCard key={idx} user={user}/>
             })} */}
-            <ProfileCard />
             <ProfileCard />
             <ProfileCard />
             <ProfileCard />

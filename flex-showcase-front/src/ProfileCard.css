@@ -1,10 +1,39 @@
 .ProfileCard{
-
-    width: 45%;
+    align-items: center;
+    box-sizing: border-box;
     min-height: 200px;
     display: flex;
-
+    gap: 30px;
     padding: 20px;
     border-radius: 10px;
     border: 2px solid #ebc9ff;
+    font-size: 18px;
+}
+
+.ProfileCard .profile-image {
+    background-color: #ebc9ff;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.ProfileCard .profile-user-info{
+    flex-grow: 1;
+
+}
+.ProfileCard .user-name{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.ProfileCard .contact-profile-btn{
+    margin-top: 8px;
+    background-color: #ebc9ff;
+    color: rgb(151, 54, 189);
+    border: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+
 }

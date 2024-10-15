@@ -5,6 +5,7 @@ import Login from './Login/Login';
 import Join from './Join/Join';
 import { useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
+import MyPage from './MyPage';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/join' element={<Join />} />
+          <Route path="/mypage" element={<MyPage />} />
         </Routes>
       </BrowserRouter>
     
