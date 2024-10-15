@@ -1,7 +1,12 @@
+import { useState } from "react";
 import ProfileCard from "./ProfileCard";
+import "./App.css"
+
 
 
 const Home = () => {
+
+    const [users, setUsers] = useState([]);
 
  return <div className="Home">
     
@@ -17,16 +22,24 @@ const Home = () => {
 
     <div>
         <h2>Profile</h2>
-        <div>
-            프로필 카드 리스트, 한 줄당 2개씩
+        <div className="profile-containter">
+            {/* {users.map((idx, user) => {
+                <ProfileCard key={idx} user={user}/>
+            })} */}
             <ProfileCard />
+            <ProfileCard />
+            <ProfileCard />
+            <ProfileCard />
+
         </div>
     </div>
 
-    <div>
+
+
+    {/* <div>
         <h2>00의 ShowRoom</h2>
         
-    </div>
+    </div> */}
 
 
 

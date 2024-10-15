@@ -1,6 +1,6 @@
 import "./ProfileCard.css";
 
-const ProfileCard = () => {
+const ProfileCard = ({member, setMember}) => {
 
 
     return(
@@ -9,7 +9,7 @@ const ProfileCard = () => {
 
             <div>
                 <div>차윤하</div>
-                <div>하고싶은 말</div>
+                <div>생일 2000.02.28</div>
                 <div>주요 기술: 
                     <div>React, Spring Boot, Spring Data JPA</div>
                 
