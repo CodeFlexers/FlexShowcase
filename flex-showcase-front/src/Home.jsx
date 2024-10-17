@@ -12,7 +12,6 @@ const Home = () => {
     const getAllUsers = async() => {
 
         const res = await api.get("/main/user-infor");
-        console.log(res.data);
         
         setUsers(res.data);
 

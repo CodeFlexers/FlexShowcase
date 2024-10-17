@@ -14,10 +14,6 @@ api.interceptors.request.use(
         if(token){
             //토큰있으면 헤더에 추가
             config.headers.Authorization = token;
-        } else {
-            //토큰 없으면 로그인 페이지로 보내기
-            alert('로그인 먼저 해주세요.');
-            window.location.href = loginPageURL;
         }
 
         if(config.method === 'post' || config.method === ' put'){

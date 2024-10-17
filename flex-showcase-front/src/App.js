@@ -8,7 +8,6 @@ import { jwtDecode } from 'jwt-decode';
 import MyPage from './MyPage';
 
 function App() {
-
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -16,14 +15,13 @@ function App() {
     if(token){
       setUser(jwtDecode(token));
     }
-
   }, [])
   return (
 
     <div className="App">
       <header className="App-header">
-        <div>CodeShowCase</div>
-        <div>{user.accountNickname}, 하이</div>
+        <div onClick={()=>window.location.href = '/'}>CodeShowCase</div>
+        <div>{user.accountNickname}, 하이</div> 
       </header>
 
       <BrowserRouter>
