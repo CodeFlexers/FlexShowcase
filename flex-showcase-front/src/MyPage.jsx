@@ -1,23 +1,17 @@
 import { useEffect, useState } from "react";
 import "./MyPage.css"
-import api from "./common/api";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "./reducer/UserDataSlice";
 
 const MyPage = () => {
-
-    // 조회한 mypage 데이터 상태 변수 저장
-    const [data, setData] = useState({});
-
-    const getMypage = async() => {
-
-        const res = await api.get("/my-page");
-        
-        setData(res.data);
-    }
+    const {data, state, error} = useSelector((state)=>state.user);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-
-        getMypage();
-
+        if(!data && !state === 'loading'){  
+            //데이터가 없고, 로딩 중이 아닐 대 정보 불러옴 로딩 중 이유는 새로 고침 시 헤더랑 같이 요청하기 때문
+            dispatch(getUser());
+        }
     }, [])
 
     return <div className="mypage">
@@ -26,7 +20,12 @@ const MyPage = () => {
         <div className="profile-info">
             <div className="profile-inf">
                 <div className="profile-in">
-                        <img src={data.profileImage} alt="프로필 사진" className="profile-image" />
+                        <img
+                            src={data.profileImage}
+                            alt="프로필 사진"
+                            className="profile-image"
+                            onError={(e) => {e.target.src = './profile/default-profile.png'}}
+                        />
                         <div className="user-name">{data.name}</div>
                         <div>email: {data.email}</div>
                         <div>phone: {data.phone}</div>
@@ -63,7 +62,9 @@ const MyPage = () => {
 
             <div className="profile-editer">
                 <h3>자유롭게 소개해주세요</h3>
-                <div dangerouslySetInnerHTML={{__html: data.contentHtml}}></div>
+                <div style={{background:'rgb(244,244,244)',borderRadius:10,padding:20}}>
+                    <div dangerouslySetInnerHTML={{__html: data.contentHtml}}></div>
+                </div>
             </div>
 
             <div className="edit-btn-container">
