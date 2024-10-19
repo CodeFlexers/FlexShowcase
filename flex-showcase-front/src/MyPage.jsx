@@ -8,7 +8,7 @@ const MyPage = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(!data && !state === 'loading'){  
+        if(!data && state !== 'loading'){  
             //데이터가 없고, 로딩 중이 아닐 대 정보 불러옴 로딩 중 이유는 새로 고침 시 헤더랑 같이 요청하기 때문
             dispatch(getUser());
         }

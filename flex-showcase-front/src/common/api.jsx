@@ -43,14 +43,18 @@ api.interceptors.response.use(
     (error) => {
         if(error.response){
             if(error.response.status === 403){
-                alert('토큰이 만료되었습니다. 다시 로그인해주세요.');
-                // localStorage.removeItem('token');
-                // window.location.href = loginPageURL;
+                alert('토큰이 만료되었습니다.');
+                console.log(error.response);
+            } else if(error.response.status === 401){   //jwt토큰이 없을 때
+                window.location.href = '/';
+                alert('토큰이 없거나, Bearer가 포함되어 있지 않습니다.');
             } else if(error.response.status === 400){
-                alert('에러 BadRequest');
+                alert('400 에러');
             }
         } else if(error.request){
             //요청 전에 에러 생겼을 때
+            console.log('ss');
+            
             console.log(error);
         } else {
             //요청도 못했을 때
