@@ -5,6 +5,9 @@ import Login from './Login/Login';
 import Join from './Join/Join';
 import MyPage from './MyPage';
 import Header from './common/Header';
+import CreateShowcase from './CreateShowcase';
+import ManageShowcase from './ManageShowcase';
+
 
 function App() {
 
@@ -23,6 +26,7 @@ function App() {
           <Route path="/create-myShowcase" element={<CreateShowcase />} />
           <Route path="/manage-myShowcase" element={<ManageShowcase />} />
         </Routes>
+        </BrowserRouter>
 
   
     </div>
