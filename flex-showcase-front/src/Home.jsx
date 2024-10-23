@@ -11,27 +11,9 @@ const Home = () => {
 
     const getAllUsers = async() => {
 
-        // const res = await api.get("/main/user-infor");
+        const res = await api.get("/main/user-infor");
         
-        // setUsers(res.data);
-
-        setUsers([
-            {
-                profileImage: "yunha.png",
-                name: "yunha",
-                email: "helena0228@naver.com",
-                birthDate : [2000, 2, 28],
-                contentHTML: "윤하 프로필이에여"
-            },
-
-            {
-                profileImage: "yunha.png",
-                name: "jiji",
-                email: "jiji@naver.com",
-                birthDate : [2000, 2, 28],
-                contentHTML: "지지 프로필이에여"
-            },
-        ])
+        setUsers(res.data);
 
     }
 

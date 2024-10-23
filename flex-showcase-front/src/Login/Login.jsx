@@ -1,9 +1,12 @@
 import { useState } from "react";
 import api from "../common/api";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getUser } from "../reducer/UserDataSlice";
 
 const Login = () => {
     const nav = useNavigate();
+    const dispatch = useDispatch();
     const [id, setId] = useState("");   
     const [pw, setPw] = useState("");
     const location = useLocation();
@@ -15,6 +18,8 @@ const Login = () => {
         try{
             const res = await api.post("/login", {username: id, password: pw});
             localStorage.setItem('token', res.headers.get("Authorization"));
+            //로그인 시 dispatch 함
+            dispatch(getUser());
             nav("/");
         } catch(err){
             alert('fail');

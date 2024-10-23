@@ -30,10 +30,10 @@ public class JWTFilter extends OncePerRequestFilter {
      */
     private boolean checkUrl(String path){
 
-        String[] needAuthUrl = {"/test"};
+        String[] needAuthUrl = {"/my-page"};
 
         for (String s : needAuthUrl) {
-            if (s.equals(path)) {
+            if (s.startsWith(path)) {
                 return true;
             }
         }
@@ -53,7 +53,7 @@ public class JWTFilter extends OncePerRequestFilter {
             String token = authorization.split(" ")[1];
             if(jwtUtil.isExpired(token)){
                 System.out.println("token Expire 상태입니다.");
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED,"로그인이 만료되었습니다.");
+                response.sendError(HttpServletResponse.SC_FORBIDDEN,"로그인이 만료되었습니다.");
                 return;
             }
 
@@ -78,10 +78,10 @@ public class JWTFilter extends OncePerRequestFilter {
         } else {
 
             //테스트 코드 시작
-            User user = new User(1L,"wjdwltjq","wjdwltjq","ROLE_USER","정지섭");
-            CustomUserDetails customUserDetails = new CustomUserDetails(user);
-            Authentication authToken = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
-            SecurityContextHolder.getContext().setAuthentication(authToken);
+//            User user = new User(1L,"wjdwltjq","wjdwltjq","ROLE_USER","정지섭");
+//            CustomUserDetails customUserDetails = new CustomUserDetails(user);
+//            Authentication authToken = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
+//            SecurityContextHolder.getContext().setAuthentication(authToken);
             //테스트 코드 끝
 
             //검사 필요한거 아니면 넘어감 유저가 누군지 모름!
