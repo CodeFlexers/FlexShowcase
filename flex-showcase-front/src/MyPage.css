@@ -2,18 +2,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: #4a4a4a;
 
+
+}
+
+.mypage .profile-detail-title, .user-name{
+    color: #ffffff;
 }
 
 
 .profile-info {
+    margin-top: 40px;
     width: 70%;
-    border: 2px solid #ebc9ff;
+    border: 3px solid #ffffff;
     align-items: center;
     padding: 30px 50px;
     border-radius: 30px;
     box-sizing: border-box;
-    align-items: center;
 
 
 }
@@ -46,7 +52,7 @@
 
 
 .profile-info .profile-image {
-    /* background-color: #ebc9ff; */
+    background-color: #ebc9ff;
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -54,27 +60,33 @@
   }
 
 
-.profile-edit{
+.profile-detail{
     
     width: 60%;
 }
 
 
-.profile-edit .profile-edit-container{
+.profile-detail .profile-detail-container{
     font-size: 18px;
     margin-bottom: 20px;
 
 }
 
-.profile-edit-container .profile-edit-title{
+.profile-detail-title{
     font-size: 20px;
-
     font-weight: bold;
     margin-bottom: 10px;
 }
 
+
+.profile-content{
+    margin-top: 40px;
+
+}
+
+
 .edit-btn-container{
-    /* float: right; */
+    float: right;
 }
 
 .edit-profile-btn {
@@ -87,4 +99,31 @@
     border-radius: 4px;
     cursor: pointer;
 
+}
+
+
+
+
+/* mypage menu list */
+.mypage-menu-container{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 70%;
+    gap: 20px;
+}
+
+.mypage-menu{
+    border: 3px solid #ffffff;
+    padding: 30px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+
+}
+
+.mypage-menu-title{
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }

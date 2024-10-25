@@ -6,7 +6,7 @@
     gap: 30px;
     padding: 20px;
     border-radius: 10px;
-    border: 2px solid #ebc9ff;
+    border: 3px solid #ffffff;
     font-size: 18px;
 }
 
@@ -20,20 +20,22 @@
 
 .ProfileCard .profile-user-info{
     flex-grow: 1;
+    
 
 }
 .ProfileCard .user-name{
     font-weight: bold;
-    font-size: 18px;
+    font-size: 22px;
+    color: #ffffff;
 }
 
 .ProfileCard .contact-profile-btn{
     margin-top: 8px;
     background-color: #ebc9ff;
-    color: rgb(151, 54, 189);
+    color: #ffffff;
     border: none;
-    font-size: 16px;
-    padding: 8px 12px;
+    font-size: 18px;
+    padding: 8px 10px;
     border-radius: 4px;
     cursor: pointer;
 

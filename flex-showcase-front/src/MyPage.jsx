@@ -15,10 +15,13 @@ const MyPage = () => {
         }
     }, [])
 
+
     return <div className="mypage">
 
+        {/* 프로필 수정 */}
         {data && 
         <div className="profile-info">
+
             <div className="profile-inf">
                 <div className="profile-in">
                         <img
@@ -32,28 +35,28 @@ const MyPage = () => {
                         <div>phone: {data.phone}</div>
                 </div>
 
-                <div className="profile-edit">
+                <div className="profile-detail">
 
-                    <div className="profile-edit-container">
-                        <div className="profile-edit-title">닉네임</div>
+                    <div className="profile-detail-container">
+                        <div className="profile-detail-title">닉네임</div>
                         <div>{data.userNickname}</div>
                         {/* <input type="text"/> */}
                     </div>
 
-                    <div className="profile-edit-container">
-                        <div className="profile-edit-title">생일</div>
+                    <div className="profile-detail-container">
+                        <div className="profile-detail-title">생일</div>
                         <div>{data.birthdate ? `${data.birthdate[0]}.${data.birthdate[1]}.${data.birthdate[2]}` : <></>}</div>
                         {/* <input type="data"/> */}
                     </div>
 
-                    <div className="profile-edit-container">
-                        <div className="profile-edit-title">이메일</div>
+                    <div className="profile-detail-container">
+                        <div className="profile-detail-title">이메일</div>
                         <div>{data.email}</div>
                         {/* <input type="text"/> */}
                     </div>
 
-                    <div className="profile-edit-container">
-                        <div className="profile-edit-title">전화번호</div>
+                    <div className="profile-detail-container">
+                        <div className="profile-detail-title">전화번호</div>
                         <div>{data.phone}</div>
                         {/* <input type="text"/> */}
                     </div>
@@ -73,10 +76,34 @@ const MyPage = () => {
             </div>
 
         </div>
-
-
-
         }
+
+        <div className="mypage-menu-container">
+
+            <div className="mypage-menu" onClick={() => nav('/create-myShowcase')}>
+                <div className="mypage-menu-title">쇼케이스 생성</div>
+                <div>내가 만든 프로젝트와 기능을 자랑해보세요.<br /><br />
+                    나의 프로젝트와 기능을 전시하여 다른 사람들에게 공유하고, 
+                    포트폴리오처럼 정리한 결과물을 보여줄 수 있어요.
+                </div>
+            </div>
+
+            <div className="mypage-menu"  onClick={() => nav('/manage-myShowcase')}>
+                <div className="mypage-menu-title">쇼케이스 관리</div>
+                <div>전시한 프로젝트와 기능을 관리하세요. <br /><br />
+                    개선하거나 추가한 것이 있다면 업데이트해보세요. 
+                </div>
+            </div>
+
+            <div className="mypage-menu">
+                <div className="mypage-menu-title">아이디 / 비밀번호 찾기</div>
+                <div>아이디는 어쩌구<br />
+                    비밀번호는 이메일 인증을 통해 변경할 수 있습니다.
+                </div>
+            </div>
+            
+
+        </div>
 
     </div>
 
