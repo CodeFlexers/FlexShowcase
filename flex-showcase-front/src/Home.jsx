@@ -24,7 +24,7 @@ const Home = () => {
 
  return <div className="Home">
     
-    <div style={{height: "300px", }}><img height={300} width='100%' src="/profile/main.jpg"/></div>
+    <div style={{height: "300px", }}><img height={300} width='100%' src="/profile/main.jp"/></div>
 
     <div>
         <h2>Introduce</h2>

@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import "./MyPage.css"
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "./reducer/UserDataSlice";
+import { useNavigate } from "react-router-dom";
 
 const MyPage = () => {
     const {data, state, error} = useSelector((state)=>state.user);
+    const nav = useNavigate();
     const dispatch = useDispatch();
     console.log(data,state,error);
     

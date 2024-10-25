@@ -41,7 +41,6 @@ public class MyPageController {
 
     @PostMapping("/my-page/profile")
     public ResponseEntity<String> modifyProfileImage(@RequestParam MultipartFile file, @AuthenticationPrincipal CustomUserDetails user){
-        System.out.println("??");
         String fileName = myPageService.modifyProfileImage(file,user.getUserCode());
         if(fileName != null){
             return ResponseEntity.ok().body(url+fileName);

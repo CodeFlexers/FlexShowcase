@@ -43,7 +43,8 @@ public class JWTFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String path = request.getRequestURI();
-        if(checkUrl(path)){
+        System.out.println(request.getMethod());
+        if(checkUrl(path) || (request.getMethod().equals("POST") && path.equals("/portfolio"))){
             String authorization = request.getHeader("Authorization");
             if(authorization == null || !authorization.startsWith("Bearer ")){
                 System.out.println("token이 없거나, Bearer가 포함되어 있지 않습니다.");
