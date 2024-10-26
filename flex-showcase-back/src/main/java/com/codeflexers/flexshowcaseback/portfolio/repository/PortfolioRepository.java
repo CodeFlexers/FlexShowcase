@@ -17,4 +17,6 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, Long> {
     @Transactional
     @Query("UPDATE Portfolio p SET p.viewCount = p.viewCount + 1 WHERE p.portfolioCode = :portfolioCode")
     void incrementViewCount(Long portfolioCode);
+
+    boolean existsByWebsiteUrl(String websiteUrl);
 }
