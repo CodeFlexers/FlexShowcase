@@ -23,6 +23,8 @@ const Login = () => {
             nav("/");
         } catch(err){
             alert('fail');
+            console.log(err);
+            
         }
 
     }

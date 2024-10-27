@@ -6,12 +6,14 @@
     justify-content: space-between;
     font-size: calc(10px + 2vmin);
     font-weight: 600;
-    color: rgb(195, 131, 255);
+    color: #ffffff;
     padding-bottom: 30px;
     
 }
 .title {
     cursor: pointer;
+    font-size: calc(15px + 2vmin);
+
 }
 .userInforBox{
     display: flex;
