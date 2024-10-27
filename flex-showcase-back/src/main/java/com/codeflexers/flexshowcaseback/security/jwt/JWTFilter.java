@@ -28,13 +28,20 @@ public class JWTFilter extends OncePerRequestFilter {
      * @param path 요청 경로
      * @return bool
      */
-    private boolean checkUrl(String path){
+    private boolean checkUrl(String path, HttpServletRequest request){
 
-        String[] needAuthUrl = {"/my-page"};
+        String[] needAuthUrl = {"/my-page","/portfolio"};
 
-        for (String s : needAuthUrl) {
-            if (s.startsWith(path)) {
-                return true;
+        for (String need : needAuthUrl) {
+            if (need.startsWith(path)) {
+                if(need.equals("/portfolio")) { //portfolio 요청이면
+                    switch (request.getMethod()) {
+                        case "PUT", "POST", "DELETE" -> {return true;}
+                        default -> {return false;}
+                    }
+                }
+
+                return true;    //needAuthUrl로 시작하면
             }
         }
         return false;
@@ -43,7 +50,7 @@ public class JWTFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String path = request.getRequestURI();
-        if(checkUrl(path)){
+        if(checkUrl(path,request) || (request.getMethod().equals("POST") && path.equals("/portfolio"))){
             String authorization = request.getHeader("Authorization");
             if(authorization == null || !authorization.startsWith("Bearer ")){
                 System.out.println("token이 없거나, Bearer가 포함되어 있지 않습니다.");

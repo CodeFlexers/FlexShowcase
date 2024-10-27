@@ -27,4 +27,8 @@ public class User {
 
     @Column(name = "user_nickname")
     private String userNickname;
+
+    public User(Long userCode) {
+        this.userCode = userCode;
+    }
 }
