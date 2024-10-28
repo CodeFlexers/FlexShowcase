@@ -1,0 +1,27 @@
+.menuCard{
+    border: 3px solid #ffffff;
+    padding: 30px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: border 0.3s ease;
+
+    
+}
+
+.menuCard:hover{
+    border-color: #b39ddb;
+    outline: none;
+}
+
+.menuCardTitle{
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+
+}
+
+.menuCard:hover .menuCardTitle{
+    color: #b39ddb;
+}

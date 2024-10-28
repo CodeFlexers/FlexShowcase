@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import "./MyPage.css"
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../reducer/UserDataSlice";
+import { getUser } from "./reducer/UserDataSlice";
 import { useNavigate } from "react-router-dom";
-import MenuCard from "../../component/MenuCard";
 
 const MyPage = () => {
 
-    const nav = useNavigate();
+
     const {data, state, error} = useSelector((state)=>state.user);
+    const nav = useNavigate();
     const dispatch = useDispatch();
+    console.log(data,state,error);
     
     useEffect(() => {
         if(!data && state !== 'loading'){  
@@ -34,8 +35,8 @@ const MyPage = () => {
                             onError={(e) => {e.target.src = './profile/default-profile.png'}}
                         />
                         <div className="user-name">{data.name}</div>
-                        <div>Email: {data.email}</div>
-                        <div>Phone: {data.phone}</div>
+                        <div>email: {data.email}</div>
+                        <div>phone: {data.phone}</div>
                 </div>
 
                 <div className="profile-detail">
@@ -67,7 +68,7 @@ const MyPage = () => {
                 </div>
             </div>
 
-            <div className="profile-content">
+            <div className="profile-editer">
                 <h3>자유롭게 소개해주세요</h3>
                 <div style={{background:'rgb(244,244,244)',borderRadius:10,padding:20}}>
                     <div dangerouslySetInnerHTML={{__html: data.contentHtml}}></div>
@@ -83,13 +84,28 @@ const MyPage = () => {
 
         <div className="mypage-menu-container">
 
-            <MenuCard title="쇼케이스 생성" subTitle="내가 만든 프로젝트와 기능을 자랑해보세요."
-                    content ="나의 프로젝트와 기능을 전시하여 다른 사람들에게 공유하고, 
-                    포트폴리오처럼 정리한 결과물을 보여줄 수 있어요." route="/create-myShowcase"/>
-            <MenuCard title="쇼케이스 관리" subTitle="전시한 프로젝트와 기능을 관리하세요."
-                    content="개선하거나 추가한 것이 있다면 업데이트해보세요." route="/manage-myShowcase" />
-            <MenuCard title="아이디 / 비밀번호 변경" subTitle="아이디는 어쩌구"
-                    content="비밀번호는 이메일 인증을 통해 변경할 수 있습니다." route="" />
+            <div className="mypage-menu" onClick={() => nav('/create-myShowcase')}>
+                <div className="mypage-menu-title">쇼케이스 생성</div>
+                <div>내가 만든 프로젝트와 기능을 자랑해보세요.<br /><br />
+                    나의 프로젝트와 기능을 전시하여 다른 사람들에게 공유하고, 
+                    포트폴리오처럼 정리한 결과물을 보여줄 수 있어요.
+                </div>
+            </div>
+
+            <div className="mypage-menu"  onClick={() => nav('/manage-myShowcase')}>
+                <div className="mypage-menu-title">쇼케이스 관리</div>
+                <div>전시한 프로젝트와 기능을 관리하세요. <br /><br />
+                    개선하거나 추가한 것이 있다면 업데이트해보세요. 
+                </div>
+            </div>
+
+            <div className="mypage-menu">
+                <div className="mypage-menu-title">아이디 / 비밀번호 찾기</div>
+                <div>아이디는 어쩌구<br />
+                    비밀번호는 이메일 인증을 통해 변경할 수 있습니다.
+                </div>
+            </div>
+            
 
         </div>
 
