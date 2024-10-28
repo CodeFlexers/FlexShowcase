@@ -5,6 +5,7 @@ import Login from './Login/Login';
 import Join from './Join/Join';
 import MyPage from './MyPage';
 import Header from './common/Header';
+import ErrorPage from './error/ErrorPage';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/join' element={<Join />} />
           <Route path="/mypage" element={<MyPage />} />
+          <Route path='*' element={<ErrorPage/>}/>
         </Routes>
       </BrowserRouter>
     
