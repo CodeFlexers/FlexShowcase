@@ -1,12 +1,33 @@
 import { useEffect, useState } from 'react';
 import api from '../../../common/api';
 import s from './CreateShowcase.module.css';
+import { useLocation, useParams } from 'react-router-dom';
 
 
 const CreateShowcase = () => {
 
     const [message, setMessage] = useState('');
     const [shake, setShake] = useState(false);
+    const {code} = useParams();
+    const [isModify, setIsModify]= useState(false);
+
+    const {state} = useLocation() || null;
+
+    useEffect(()=>{
+        if(code){
+            const loadData = {
+                portfolioCode: code,
+                projectName: state.projectName,
+                websiteUrl: state.websiteUrl,
+                descriptionHTML: state.descriptionHTML,
+                thumbnailImage: state.thumbnailImage,
+                githubRepo: state.githubRepo,
+            }
+            setShowcaseData(loadData);
+            setIsModify(true);
+        }
+    },[])
+    
 
     const [showcaseData, setShowcaseData] = useState({
         projectName: "",
@@ -18,9 +39,13 @@ const CreateShowcase = () => {
     });
 
 
+    /*  */
+
+
+
+
     /* input handler */
     const handlerInput = (e) => {
-        console.log(e.target);
         
         const {name, value} = e.target;
         setShowcaseData((prev) => ({    // 함수를 전달하면 현재 상태를 인수로, 반환하는 객체를 새로운 상태로 사용
@@ -28,7 +53,6 @@ const CreateShowcase = () => {
             [name]: value,  // [동적으로 계산된 속성 이름]
 
         }));
-        // console.log("showcaseData: ", showcaseData);
         
     }
 
@@ -52,6 +76,18 @@ const CreateShowcase = () => {
             }
         }
     }
+
+
+
+    const modifyShowcase = async() => {
+
+        const res = await api.post('/portfolio', showcaseData);
+        console.log(res);
+        
+    }
+
+
+
 
     return (
         <div className={s.CreateShowcase}>
@@ -103,7 +139,13 @@ const CreateShowcase = () => {
                 onChange={handlerInput}
                 />
                 {message ? <div className={shake ? s.message : s.messageDefault}>{message}</div> : <></>}
+                {isModify ? 
+                <button className={s.button} onClick={() => modifyShowcase()}>수정하기</button>
+                :
                 <button className={s.button} onClick={() => registShowcase()}>등록하기</button>
+                }
+
+                :
 
             </div>
 

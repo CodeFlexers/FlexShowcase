@@ -85,11 +85,11 @@ const MyPage = () => {
 
             <MenuCard title="쇼케이스 생성" subTitle="내가 만든 프로젝트와 기능을 자랑해보세요."
                     content ="나의 프로젝트와 기능을 전시하여 다른 사람들에게 공유하고, 
-                    포트폴리오처럼 정리한 결과물을 보여줄 수 있어요." route="/create-myShowcase"/>
+                    포트폴리오처럼 정리한 결과물을 보여줄 수 있어요." route="/create-myShowcase"  width={'70%'}/>
             <MenuCard title="쇼케이스 관리" subTitle="전시한 프로젝트와 기능을 관리하세요."
-                    content="개선하거나 추가한 것이 있다면 업데이트해보세요." route="/manage-myShowcase" />
+                    content="개선하거나 추가한 것이 있다면 업데이트해보세요." route="/manage-myShowcase"   width={'70%'} />
             <MenuCard title="아이디 / 비밀번호 변경" subTitle="아이디는 어쩌구"
-                    content="비밀번호는 이메일 인증을 통해 변경할 수 있습니다." route="" />
+                    content="비밀번호는 이메일 인증을 통해 변경할 수 있습니다." route=""   width={'70%'} />
 
         </div>
 

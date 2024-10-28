@@ -4,9 +4,11 @@
     border-radius: 30px;
     cursor: pointer;
     transition: border 0.3s ease;
-
     
+    margin-bottom: 20px;
+
 }
+
 
 .menuCard:hover{
     border-color: #b39ddb;

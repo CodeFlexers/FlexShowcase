@@ -31,7 +31,7 @@ public class PortfolioController {
         }
     }
     @PostMapping()
-    public ResponseEntity<?> modifyPortfolio(@RequestBody PortfolioDTO portfolio, @AuthenticationPrincipal CustomUserDetails user){
+    public ResponseEntity<?> modifyPortfolio(PortfolioDTO portfolio, @AuthenticationPrincipal CustomUserDetails user){
         return ResponseEntity.ok().body(portfolioService.modifyPortfolio(portfolio,user));
     }
     @DeleteMapping()

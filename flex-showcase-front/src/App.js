@@ -26,6 +26,7 @@ function App() {
           <Route path="/mypage" element={<Mypage />} />
           <Route path='*' element={<ErrorPage/>}/>
           <Route path="/create-myShowcase" element={<CreateShowcase />} />
+          <Route path="/create-myShowcase/:code" element={<CreateShowcase />} />
           <Route path="/manage-myShowcase" element={<ManageShowcase />} />
         </Routes>
       </BrowserRouter>
