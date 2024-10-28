@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface MyPageUserInforRepository extends JpaRepository<MyPageUserInfor, Long> {
     @Query("SELECT new com.codeflexers.flexshowcaseback.mypage.dto.MyPageDTO(" +
+            "t.user.userCode," +
             "t.user.userId," +
             "t.user.userRole," +
             "t.user.userNickname," +

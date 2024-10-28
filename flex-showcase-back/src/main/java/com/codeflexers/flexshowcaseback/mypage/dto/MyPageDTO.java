@@ -7,6 +7,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Setter@Getter@ToString
 public class MyPageDTO {
+    private Long userCode;
     private String userId;
     private String userRole;
     private String userNickname;
