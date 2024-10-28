@@ -91,8 +91,8 @@
 
 .edit-profile-btn {
     margin-top: 8px;
-    background-color: #ebc9ff;
-    color: rgb(151, 54, 189);
+    background-color: #b39ddb ;
+    color: #ffffff;
     border: none;
     font-size: 16px;
     padding: 8px 12px;
@@ -118,7 +118,14 @@
     padding: 30px 30px;
     border-radius: 30px;
     cursor: pointer;
+    transition: border 0.3s ease;
 
+    
+}
+
+.mypage-menu:hover{
+    border-color: #b39ddb;
+    outline: none;
 }
 
 .mypage-menu-title{
@@ -126,4 +133,10 @@
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 20px;
+    transition: color 0.3s ease;
+
+}
+
+.mypage-menu:hover .mypage-menu-title{
+    color: #b39ddb;
 }

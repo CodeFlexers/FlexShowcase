@@ -1,0 +1,77 @@
+.CreateShowcase{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    
+}
+
+.formContainer {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 3rem;
+    width: 100%;
+    max-width: 700px;
+
+  }
+
+
+  
+.title {
+    color: #656565;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  
+
+  .subTitle{
+    margin-top: 2rem;
+    color: #666666;
+    font-weight: 500;
+    text-align: left;
+  }
+  
+
+  input,
+  textarea {
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+  }
+  
+  input:focus,
+  textarea:focus {
+    border-color: #b39ddb;
+    outline: none;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 200px;
+  }
+  
+
+  button {
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    background-color: #b39ddb;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #9575cd;
+  }

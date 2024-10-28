@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import ProfileCard from "./ProfileCard";
-import "./App.css"
-import api from "./common/api";
+import ProfileCard from "../../component/profileCard/ProfileCard";
+import s from "./Home.module.css";
+import api from "../../common/api";
 
 
 
@@ -22,7 +22,7 @@ const Home = () => {
 
     }, [])
 
- return <div className="Home">
+ return <div className={s.Home}>
     
     <div style={{height: "300px", }}><img height={300} width='100%' src="/profile/main.jp"/></div>
 
@@ -36,7 +36,7 @@ const Home = () => {
 
     <div>
         <h2>Profile</h2>
-        <div className="profile-cardList">
+        <div className={s.profileCardList}>
             {users.map((user, idx) => 
                 <ProfileCard key={idx} user={user}/>
             )}
