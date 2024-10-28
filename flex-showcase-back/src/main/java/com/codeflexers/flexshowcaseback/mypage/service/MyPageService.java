@@ -9,12 +9,16 @@ import com.codeflexers.flexshowcaseback.mypage.repository.MyPageUserInforReposit
 import com.codeflexers.flexshowcaseback.mypage.repository.MyPageUserRepository;
 import com.codeflexers.flexshowcaseback.security.dto.CustomUserDetails;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class MyPageService {
+    @Value("${file.upload-dir}")
+    private String uploadDir;
+
     private final MyPageUserInforRepository myPageUserInforRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final MyPageUserRepository myPageUserRepository;
@@ -34,6 +38,7 @@ public class MyPageService {
     @Transactional
     public String modifyProfileImage(MultipartFile file, Long userCode) {
         MyPageUserInfor myPageUserInfor = myPageUserInforRepository.findByUser_userCode(userCode);
+        tool.delete(uploadDir+"/"+myPageUserInfor.getProfileImage());
         String fileName = tool.upload(file);
         if(fileName != null){
             myPageUserInfor.setProfileImage(fileName);

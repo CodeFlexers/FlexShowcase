@@ -22,6 +22,8 @@ api.interceptors.request.use(
             for(const key in config.data){
                 formData.append(key, config.data[key]);
             }
+            console.log("form: ", formData);
+            
             config.data = formData;
             config.headers['Content-Type'] = 'multipart/form-data';
         }

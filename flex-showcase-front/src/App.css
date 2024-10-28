@@ -1,8 +1,11 @@
-.App {
-  margin-left: 100px;
-  margin-right: 100px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+Body {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: linear-gradient(135deg, #f8bbd0, #d1c4e9, #b39ddb);
+  /* 파스텔 핑크: #f8bbd0, 파스텔 보라: #d1c4e9, 연한 보라: #b39ddb */
+  /* height: 100vh; */
 
 }
 
@@ -22,20 +25,21 @@
   font-size: calc(10px + 2vmin);
   font-weight: 600;
   color: rgb(195, 131, 255);
+  color: #ffffff;
   padding-bottom: 30px;
   
 }
 
-
-.Home h2{
-  margin-bottom: 20px;
-  margin-top: 50px;
+.App-user{
+  display: flex;
+  align-items: center; /* 수직 정렬 (중앙 정렬) */
 }
 
-
-.profile-cardList{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 두 개의 열로 나누기 */
-  gap: 30px; /* 카드 간의 간격 */
+.App-header .profile-image {
+  background-color: #ebc9ff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  
 }
-

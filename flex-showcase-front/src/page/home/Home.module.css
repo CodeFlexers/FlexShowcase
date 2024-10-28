@@ -1,0 +1,20 @@
+
+.Home{
+    color: #4a4a4a;
+  }
+  
+  
+  .Home h2{
+    color: #ffffff;
+  
+    margin-bottom: 20px;
+    margin-top: 50px;
+  }
+  
+  
+  .profileCardList{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 두 개의 열로 나누기 */
+    gap: 30px; /* 카드 간의 간격 */
+  }
+  
