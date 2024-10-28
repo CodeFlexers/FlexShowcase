@@ -8,6 +8,7 @@ import com.codeflexers.flexshowcaseback.security.dto.CustomUserDetails;
 import com.codeflexers.flexshowcaseback.security.entity.User;
 import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -30,11 +31,9 @@ public class PortfolioService {
     }
 
     @Transactional
-    public Object createPortfolio(PortfolioDTO portfolioDTO, CustomUserDetails user) {
+    public String createPortfolio(PortfolioDTO portfolioDTO, CustomUserDetails user) throws Exception {
+        System.out.println(portfolioDTO);
         try {
-            if (portfolioRepository.existsByWebsiteUrl(portfolioDTO.getWebsiteUrl())) {
-                return "이미 존재하는 웹사이트 URL입니다.";
-            }
             Portfolio portfolio = new Portfolio(
                     new User(user.getUserCode()),
                     portfolioDTO.getWebsiteUrl(),
@@ -45,11 +44,14 @@ public class PortfolioService {
                     portfolioDTO.getGithubRepo(),
                     0
             );
-            portfolioRepository.save(portfolio);    //dto를 보내줄지? 메세지를 보내줄지? 상의 후 결정
-            return portfolio;
+            portfolioRepository.save(portfolio);
+            return "쇼케이스가 등록되었습니다.";
+
+        } catch (DataIntegrityViolationException e){
+            throw new DataIntegrityViolationException("이미 존재하는 쇼케이스 URL 입니다.");
         } catch (Exception e) {
             tool.writeErrorLog(e.getMessage(),user.getUserCode());
-            return "포트폴리오 생성에 실패했습니다. 관리자에게 문의해주세요.";
+            throw new Exception("쇼케이스 생성에 실패했습니다. 관리자에게 문의해주세요.");
         }
     }
 

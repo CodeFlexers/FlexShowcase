@@ -38,8 +38,8 @@
   }
   
 
-  input,
-  textarea {
+  .input,
+  .textArea {
     margin-top: 0.5rem;
     padding: 0.75rem;
     border: 1px solid #dddddd;
@@ -48,19 +48,19 @@
     transition: border 0.3s ease;
   }
   
-  input:focus,
-  textarea:focus {
+  .input:focus,
+  .textArea:focus {
     border-color: #b39ddb;
     outline: none;
   }
   
-  textarea {
-    resize: vertical;
+  .textArea {
+    resize:vertical;
     min-height: 200px;
   }
   
 
-  button {
+  .button {
     margin-top: 1.5rem;
     padding: 0.75rem;
     background-color: #b39ddb;
@@ -72,6 +72,21 @@
     transition: background-color 0.3s ease;
   }
   
-  button:hover {
+  .button:hover {
     background-color: #9575cd;
+  }
+
+  @keyframes message {
+    0%, 100% {transform: translateY(0);}
+    25% {transform: translateY(-5px);}
+    75% {transform: translateY(5px);}
+  }
+  .message{
+    color: red;
+    padding-top: 20px;
+    animation: message 0.3s ease-in-out;
+  }
+  .messageDefault{
+    color: red;
+    padding-top: 20px;
   }

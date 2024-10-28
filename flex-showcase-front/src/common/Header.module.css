@@ -1,7 +1,6 @@
 .header {
     display: flex;
     /* flex-direction: column; */
-    /* align-items: center; */
   
     justify-content: space-between;
     font-size: calc(10px + 2vmin);
@@ -17,6 +16,7 @@
 }
 .userInforBox{
     display: flex;
+    align-items: center;
 }
 .logout{
     cursor: pointer;

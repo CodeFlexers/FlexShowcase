@@ -23,9 +23,8 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/join' element={<Join />} />
-          <Route path="/mypage" element={<MyPage />} />
-          <Route path='*' element={<ErrorPage/>}/>
           <Route path="/mypage" element={<Mypage />} />
+          <Route path='*' element={<ErrorPage/>}/>
           <Route path="/create-myShowcase" element={<CreateShowcase />} />
           <Route path="/manage-myShowcase" element={<ManageShowcase />} />
         </Routes>

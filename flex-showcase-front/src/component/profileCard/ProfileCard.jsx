@@ -16,13 +16,13 @@ const ProfileCard = ({user}) => {
                 />
                 <div className="profile-user-info">
                     <div className="user-name">{user.name}</div>
-                    <div>email | {user.email}</div>
-                    <div>birth | {user.birthDate ? `${user.birthDate[0]}.${user.birthDate[1]}.${user.birthDate[2]}` : ``}</div>
+                    <div>Email | {user.email}</div>
+                    <div>Birth | {user.birthDate ? `${user.birthDate[0]}.${user.birthDate[1]}.${user.birthDate[2]}` : ``}</div>
                 </div>
             </div>
 
             <div style={{ flexGrow: 1, alignSelf: 'flex-start' }} dangerouslySetInnerHTML={{ __html: user.contentHTML }}></div>
-            <button className="contact-profile-btn" style={{ alignSelf: 'center' }}>contact me</button>
+            <button className="contact-profile-btn" style={{ alignSelf: 'center' }}>Contact me</button>
         </div>
     )
 

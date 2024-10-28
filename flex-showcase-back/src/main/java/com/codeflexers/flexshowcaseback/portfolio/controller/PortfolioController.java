@@ -23,11 +23,15 @@ public class PortfolioController {
         return ResponseEntity.ok().body(portfolioService.getPortfolio(userCode));
     }
     @PutMapping()
-    public ResponseEntity<?> createPortfolio(PortfolioDTO portfolioDTO, @AuthenticationPrincipal CustomUserDetails user){
-        return ResponseEntity.ok().body(portfolioService.createPortfolio(portfolioDTO, user));
+    public ResponseEntity<String> createPortfolio(@RequestBody PortfolioDTO portfolioDTO, @AuthenticationPrincipal CustomUserDetails user){
+        try{
+            return ResponseEntity.ok().body(portfolioService.createPortfolio(portfolioDTO, user));
+        } catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
     @PostMapping()
-    public ResponseEntity<?> modifyPortfolio(PortfolioDTO portfolio, @AuthenticationPrincipal CustomUserDetails user){
+    public ResponseEntity<?> modifyPortfolio(@RequestBody PortfolioDTO portfolio, @AuthenticationPrincipal CustomUserDetails user){
         return ResponseEntity.ok().body(portfolioService.modifyPortfolio(portfolio,user));
     }
     @DeleteMapping()

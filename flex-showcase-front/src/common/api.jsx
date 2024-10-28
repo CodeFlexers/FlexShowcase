@@ -18,11 +18,12 @@ api.interceptors.request.use(
 
         if(config.method === 'post' || config.method === ' put'){
             //만약 post 나, put 이라면 폼데이터 사용
+            
             const formData = new FormData();
+
             for(const key in config.data){
                 formData.append(key, config.data[key]);
             }
-            console.log("form: ", formData);
             
             config.data = formData;
             config.headers['Content-Type'] = 'multipart/form-data';
@@ -43,21 +44,15 @@ api.interceptors.response.use(
         return response;
     },
     (error) => {
+        return Promise.reject(error);
         if(error.response){
             if(error.response.status === 403){
                 alert('토큰이 만료되었습니다.');
                 console.log(error.response);
-            } else if(error.response.status === 401){   //jwt토큰이 없을 때
-                window.location.href = '/';
-                alert('토큰이 없거나, Bearer가 포함되어 있지 않습니다.');
-            } else if(error.response.status === 400){
-                alert('400 에러');
             }
         } else if(error.request){
             //요청 전에 에러 생겼을 때
-            console.log('ss');
-            
-            console.log(error);
+
         } else {
             //요청도 못했을 때
             console.error(`요청도 못함 : ${error}`)

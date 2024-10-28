@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import api from "../common/api";
 
 export const getUser = createAsyncThunk('get/user', async () => {
-<<<<<<< HEAD
     try{
         const res = await api.get("/my-page");        
         console.log('(경고!) dispatch 했음 최대한 이거 안뜨게 하자');
@@ -11,17 +10,6 @@ export const getUser = createAsyncThunk('get/user', async () => {
         console.log(err);
         return null;
     }
-    
-    return res.data;
-=======
-    const res = await api.get("/my-page");
-    console.log('(경고!) dispatch 했음 최대한 이거 안뜨게 하자');
-    if(res){
-        return res.data;
-    } else {
-        return null;
-    }
->>>>>>> a24fcea5f0fdf75aa74d8f4a730a4dd061d8ec3c
 });
 
 const userSlice = createSlice({

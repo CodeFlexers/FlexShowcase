@@ -3,6 +3,7 @@ package com.codeflexers.flexshowcaseback.security.jwt;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 @Component
+@Slf4j
 public class JWTUtil {
     private final SecretKey secretKey;    //yml에 있는 secretKey임
 
@@ -20,8 +22,13 @@ public class JWTUtil {
     }
 
     private Claims getInfo(String token){
-        //verifyWith 는 시크릿 키를 갖고 우리 서버에서 생성된 토큰이 맞는지 검사한다.
-        return Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload();
+        try{
+            //verifyWith 는 시크릿 키를 갖고 우리 서버에서 생성된 토큰이 맞는지 검사한다.
+            return Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload();
+        } catch (Exception e){
+            log.info(e.getMessage());
+        }
+        return null;
     }
     public Long getUserCode(String token) {
         return getInfo(token).get("accountCode",Long.class);

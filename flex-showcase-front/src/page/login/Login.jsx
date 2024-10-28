@@ -11,27 +11,28 @@ const Login = () => {
     const [pw, setPw] = useState("");
     const location = useLocation();
     const {message} = location.state || {};
+    const [pageMessage, setPageMessage] = useState('');
 
     // decode token : jwtDecode(localStorage.getItem('token'))
 
     const login = async() => {
         try{
-            const res = await api.post("/login", {username: id, password: pw});
+            const res = await api.post("/login", {username: id, password: pw});            
             localStorage.setItem('token', res.headers.get("Authorization"));
             //로그인 시 dispatch 함
             dispatch(getUser());
             nav("/");
         } catch(err){
-            alert('fail');
             console.log(err);
             
+            setPageMessage("아이디 또는, 비밀번호가 다릅니다.");
         }
 
     }
 
     return <div>
 
-    { message ? <div>{message}</div> : <></>}
+    { message ? <div>{message}</div> : pageMessage ? <div>{pageMessage}</div> : <></>}
     Id <input type="text" value={id} placeholder="아이디" onChange={(e) => setId(e.target.value)}/>
     Pw <input type="password" value={pw} placeholder="비밀번호" onChange={(e) => setPw(e.target.value)}/>
     <button onClick={login}>로그인</button>

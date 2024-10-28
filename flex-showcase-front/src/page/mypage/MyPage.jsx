@@ -6,10 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 const MyPage = () => {
 
-
+    const nav = useNavigate();
     const {data, state, error} = useSelector((state)=>state.user);
     const dispatch = useDispatch();
-    console.log(data,state,error);
     
     useEffect(() => {
         if(!data && state !== 'loading'){  
@@ -34,8 +33,8 @@ const MyPage = () => {
                             onError={(e) => {e.target.src = './profile/default-profile.png'}}
                         />
                         <div className="user-name">{data.name}</div>
-                        <div>email: {data.email}</div>
-                        <div>phone: {data.phone}</div>
+                        <div>Email: {data.email}</div>
+                        <div>Phone: {data.phone}</div>
                 </div>
 
                 <div className="profile-detail">
