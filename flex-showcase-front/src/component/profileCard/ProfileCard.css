@@ -31,12 +31,13 @@
 
 .ProfileCard .contact-profile-btn{
     margin-top: 8px;
-    background-color: #ebc9ff;
     color: #ffffff;
     border: none;
     font-size: 18px;
     padding: 8px 10px;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+
 
 }

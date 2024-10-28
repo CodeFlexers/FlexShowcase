@@ -1,4 +1,4 @@
-.App {
+Body {
   padding-left: 100px;
   padding-right: 100px;
   padding-top: 30px;
@@ -43,23 +43,3 @@
   margin-right: 10px;
   
 }
-
-.Home{
-  color: #4a4a4a;
-}
-
-
-.Home h2{
-  color: #ffffff;
-
-  margin-bottom: 20px;
-  margin-top: 50px;
-}
-
-
-.profile-cardList{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 두 개의 열로 나누기 */
-  gap: 30px; /* 카드 간의 간격 */
-}
-

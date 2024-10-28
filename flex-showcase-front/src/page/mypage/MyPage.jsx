@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import "./MyPage.css"
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "./reducer/UserDataSlice";
+import { getUser } from "../../reducer/UserDataSlice";
 import { useNavigate } from "react-router-dom";
 
 const MyPage = () => {
 
     const nav = useNavigate();
     const {data, state, error} = useSelector((state)=>state.user);
-    const nav = useNavigate();
     const dispatch = useDispatch();
     console.log(data,state,error);
     
@@ -68,7 +67,7 @@ const MyPage = () => {
                 </div>
             </div>
 
-            <div className="profile-editer">
+            <div className="profile-content">
                 <h3>자유롭게 소개해주세요</h3>
                 <div style={{background:'rgb(244,244,244)',borderRadius:10,padding:20}}>
                     <div dangerouslySetInnerHTML={{__html: data.contentHtml}}></div>

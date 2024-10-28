@@ -1,8 +1,8 @@
 import { useState } from "react";
-import api from "../common/api";
+import api from "../../common/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getUser } from "../reducer/UserDataSlice";
+import { getUser } from "../../reducer/UserDataSlice";
 
 const Login = () => {
     const nav = useNavigate();

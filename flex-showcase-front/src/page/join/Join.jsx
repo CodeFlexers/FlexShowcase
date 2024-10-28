@@ -1,5 +1,5 @@
 import { useState } from "react";
-import api from "../common/api";
+import api from "../../common/api";
 import { useNavigate } from "react-router-dom";
 
 const Join = () => {
