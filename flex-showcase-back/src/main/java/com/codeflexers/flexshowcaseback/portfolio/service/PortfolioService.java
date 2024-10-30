@@ -12,6 +12,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Objects;
@@ -110,4 +111,7 @@ public class PortfolioService {
         }
     }
 
+    public String uploadImage(MultipartFile file) {
+        return tool.upload(file);
+    }
 }

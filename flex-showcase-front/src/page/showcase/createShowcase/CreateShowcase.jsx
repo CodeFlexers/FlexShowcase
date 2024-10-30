@@ -10,6 +10,7 @@ const CreateShowcase = () => {
     const [shake, setShake] = useState(false);
     const {code} = useParams();
     const [isModify, setIsModify]= useState(false);
+    const [image, setImage] = useState({});
 
     const {state} = useLocation() || null;
 
@@ -39,10 +40,6 @@ const CreateShowcase = () => {
     });
 
 
-    /*  */
-
-
-
 
     /* input handler */
     const handlerInput = (e) => {
@@ -55,18 +52,29 @@ const CreateShowcase = () => {
         }));
         
     }
+    const handlerImage = async (e) => {
+        setImage(e.target.files[0]);
+        const res = await api.post(`/portfolio/image`,{file: e.target.files[0]});
+        setShowcaseData((prev)=> ({
+            ...prev,
+            thumbnailImage: res.data
+        }));
+        
+    }
 
-
-    /* 쇼케이스 등록 요청*/
-    const registShowcase = async() => {
-        setShake(false);
-        // if(Object.values(showcaseData).every(value => !value)){
-        //     setMessage('모두 입력해주세요.');
-        // }
+    const isValid = async () => {
         if(showcaseData.projectName === "" || showcaseData.websiteUrl === "" || showcaseData.descriptionHTML === ""){
             setMessage('제목, URL, 내용은 비어있을 수 없습니다.');
             setShake(true);
-        }else {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    /* 쇼케이스 등록 요청*/
+    const registShowcase = async() => {
+        setShake(false);
+        if(isValid()){
             try{
                 const res = await api.put('/portfolio', showcaseData);
                 alert(`ResponseCode : ${res.status}\nCreateShocase.jsx 43번 줄\n하고 싶은 동작 쓰기\nserver msg : ${res.data}`);
@@ -77,13 +85,17 @@ const CreateShowcase = () => {
         }
     }
 
-
-
-    const modifyShowcase = async() => {
-
-        const res = await api.post('/portfolio', showcaseData);
-        console.log(res);
-        
+    const modifyShowcase = async () => {
+        setShake(false);
+        if(isValid()){
+            try{
+                const res = await api.post('/portfolio', showcaseData);
+                alert(`ResponseCode : ${res.status}\nCreateShocase.jsx 43번 줄\n하고 싶은 동작 쓰기\nserver msg : ${res.data}`);
+            } catch(err){
+                setMessage(err.response.data);
+                setShake(true);
+            }
+        }
     }
 
 
@@ -127,8 +139,7 @@ const CreateShowcase = () => {
                 <input type="file" id="thumbnail" 
                 className={s.input}
                 name="thumbnailImage" multiple
-                value={showcaseData.thumbnailImage}
-                onChange={handlerInput}
+                onChange={handlerImage}
                 />
 
                 <label htmlFor="github" className={s.subTitle}>깃허브</label>

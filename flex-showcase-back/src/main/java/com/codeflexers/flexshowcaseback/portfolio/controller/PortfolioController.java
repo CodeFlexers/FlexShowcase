@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -41,5 +42,9 @@ public class PortfolioController {
     @PostMapping("/view-count")
     public void increaseViewCount(Long portfolioCode, HttpServletRequest request){
         portfolioService.increaseViewCount(portfolioCode,request.getRemoteAddr());
+    }
+    @PostMapping("/image")
+    public ResponseEntity<String> uploadImage(@RequestPart MultipartFile file){
+        return ResponseEntity.ok().body(portfolioService.uploadImage(file));
     }
 }
